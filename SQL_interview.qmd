@@ -1,0 +1,98 @@
+---
+title: "SQL Interview"
+date-format: long
+format:
+  html:
+    theme: [cosmo, theme.scss]
+    toc: true
+    embed-resources: true
+author:
+  - name: 
+---
+
+
+# Requirement
+You will have 30 minutes to work on the following 5 questions:
+If you don’t have time to write down the complete query, try to write down the steps of your thought process. We put the needed data table(s) before each question and removed certain variables for simplicity. The data in the table are not limited to the rows demonstrated as examples. Please feel free to use MySQL, Oracle SQL, PostgreSQL, MS SQL, Bigquery or any other SQL syntax you feel comfortable with.
+
+
+# Table Overview
+There are three tables available: 
+
+*   **Orders:** Transactional table which shows offer details of car rental bookings. Each row represents each order 
+       + **booking_id:** unique identifier of each booked rental car
+       + **supplier_code:** supplier is the brand of the rental car company booked
+       + **total_price:** the total rate charged on the customer with margin
+       + **base_price:** the total rate given by the suppliers without margin
+       + **location_code:** the location where cars to be picked up
+       + **vehicle_category:** the car type that is booked
+       + **offer_date_time:** date-time when offer is booked
+
+|  booking_id | supplier_code | total_price | base_price | location_code | vehicle_category |   offer_date_time   |
+|-------------|---------------|-------------|------------|---------------|------------------|---------------------|
+|   10001     |      AV       |     80.5    |    64.5    |      MCO      |      Compact     | 2024-01-02 12:01:01 |
+|   100021    |      BU       |     70.9    |    60.4    |      LGA      |     Mid-Size     | 2024-01-02 13:02:10 |     
+|   30358     |      HZ       |    201.3    |    177.1   |      BOS      |    Full Size     | 2024-01-10 13:11:23 |
+|   1009485   |      ZR       |    222.7    |    190     |      DEN      |   Standard SUV   | 2024-01-01 09:13:27 |
+|   204531    |      ET       |    304.2    |    234.2   |      LGA001   |    Mid Size SUV  | 2024-01-11 10:11:00 |
+|   20003     |      BU       |    594.9    |    510.3   |      MIA      |   Full Size Van  | 2024-01-23 04:50:11 |
+: Orders {.striped .hover}
+
+*   **Suppliers:** Dimensional table that maps the brand names by supplier_code
+       + **supplier_code:** supplier is the brand of the rental car company booked
+       + **supplier_name:** brand name of the supplies
+
+|  supplier_code | supplier_name | num_active_locations |
+|----------------|---------------|----------------------|
+|       AV       |      Avis     |         200          |
+|       BU       |      Budget   |         202          |
+|       AL       |      Alamo    |         307          |
+|       AC       |      ACE      |         131          |
+|       FO       |      Foco     |         40           |
+: Suppliers {.striped .hover}
+
+*   **Location:** Dimensional table that shows location details
+       + **location_code:** the location where cars to be picked up
+       + **city_name:** corresponding city of the pickup location
+
+|  location_code |   city_name   | on_airport_flag |
+|----------------|---------------|-----------------|
+|     MCO001     |   Orlando     |        N        |
+|     NYC002     |   New York    |        N        |
+|     AUS        |   Austin      |        Y        |
+|     DFW        |   Dallas      |        Y        |
+|     LGA        |   New York    |        Y        |
+|     ATL        |   Atlanta     |        Y        |
+: Loctions {.striped .hover}
+
+
+# Question 1
+Write a SQL query to calculate number of bookings by date
+
+```{sql}
+
+```
+
+# Question 2
+Write a SQL query to get number of bookings for January group by supplier names 
+```{sql}
+
+```
+
+# Question 3
+Write a SQL query to display average offer total price from highest to lowest by city names
+```{sql}
+
+```
+
+# Question 4
+Write a SQL query to count percentage of bookings where the margin% is less than 10%  (margin = total price - base price)
+```{sql}
+
+```
+
+# Question 5 (optional)
+Write a SQL query to count how many distinct vehicle types booked in each location
+```{sql}
+
+```
